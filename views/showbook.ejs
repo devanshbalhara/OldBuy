@@ -1,0 +1,43 @@
+<% layout('layout/boilerplate') %>
+    <div class="row mt-4 mb-4">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+            <div class="card">
+                <img src="<%=book.image %>" style="max-height: 400px; object-fit: contain;" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="text-capitalize card-title">
+                        <%= book.name %>
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Price : &#8377 <%= book.price %>
+                    </li>
+                    </li>
+                    <li class="list-group-item">Edition : <%= book.edition %>
+                    </li>
+                    <li class="text-capitalize list-group-item">Authors : <%= book.authors %>
+                    </li>
+                    <li class="text-capitalize list-group-item">Publisher : <%= book.publisher %>
+                    </li>
+                    </li>
+                    <li class="text-capitalize list-group-item">Category : <%= book.category %> Engineering
+                    </li>
+                    <li class="list-group-item">Seller UserName : <%= book.owner.username %>
+                    </li>
+                    <li class="list-group-item">Seller Email : <%= book.owner.email %>
+                    </li>
+                    <li class="text-capitalize list-group-item">Date Added : <%= book.createdAt.getDate() + "/" +
+                            (book.createdAt.getMonth()+1) + "/" + book.createdAt.getFullYear() %>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a class="btn btn-success mb-2" href="mailto:<%=book.owner.email%>">Contact</a>
+                    <% if (currentUser && book.owner.equals(currentUser._id)) {%>
+                        <a class="btn btn-info mb-2" href="/showbook/<%=book._id%>/edit">Edit</a>
+                        <form class="d-inline" action="/showbook/<%= book._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger mb-2">Delete</button>
+                        </form>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg bg-light sticky-top" data-bs-theme="light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/images/navbar_img.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            OldBuy
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 20px;">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/book/sell">Sell</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Buy
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/showbooks/all">All Branches</a></li>
+                        <li><a class="dropdown-item" href="/showbooks/computer">Computer Engineering</a></li>
+                        <li><a class="dropdown-item" href="/showbooks/mechanical">Mechanical Engineering</a></li>
+                        <li><a class="dropdown-item" href="/showbooks/electrical">Electrical Engineering</a></li>
+                        <li><a class="dropdown-item" href="/showbooks/civil">Civil Engineering</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form action="<%if (typeof category !== 'undefined') { %>
+
+                <%} else {%> /showbooks/all <%}%>" class="d-flex" method="GET" role="search">
+                <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0" style="margin-left: 20px;">
+                <li class="nav-item me-3 mb-2 mt-2 mt-lg-0 mb-lg-0">
+                    <a href="/profile"><img style="max-height: 25px;" src="/images/user.png"></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout"><img style="max-height: 25px;" src="/images/logout.png"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

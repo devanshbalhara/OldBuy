@@ -1,0 +1,49 @@
+<% layout('layout/boilerplate') %>
+    <h1 class="text-center text-capitalize">
+        <%= category %> Engineering Books
+    </h1>
+    <% if (books.length) { %>
+        <div class="mt-4">
+            <button class="dropdown-toggle btn btn-success" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Sort
+            </button>
+            <ul class="dropdown-menu">
+                <li><button class="dropdown-item" onclick="sortobj('name',1)">Name - Ascending</button></li>
+                <li><button class="dropdown-item" onclick="sortobj('name',-1)">Name - Descending</button></li>
+                <li><button class="dropdown-item" onclick="sortobj('price',1)">Price - Ascending</button></li>
+                <li><button class="dropdown-item" onclick="sortobj('price',-1)">Price - Descending</button></li>
+                <li><button class="dropdown-item" onclick="sortobj('edition',1)">Edition - Ascending</button></li>
+                <li><button class="dropdown-item" onclick="sortobj('edition',-1)">Edition - Descending</button></li>
+                <li><button class="dropdown-item" onclick="sortobj('date',1)">Date Added - Ascending</button></li>
+                <li><button class="dropdown-item" onclick="sortobj('date',-1)">Date Added - Descending</button></li>
+            </ul>
+        </div>
+        <% } %>
+            <section class="mt-5 mb-5">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5" id="books-list">
+                    <% for(let book of books) { %>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="<%= book.image%>" class="card-img-top"
+                                    style="max-height: 200px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= book.name %>
+                                    </h5>
+                                    <p class="card-text">
+                                    <p class="book-list-price">Price : &#8377 <%= book.price %>
+                                    </p>
+                                    <p class="book-list-edition">Edition : <%= book.edition %>
+                                    </p>
+                                    <p class="book-list-date" style="display: none;">
+                                        <%= book.createdAt %>
+                                    </p>
+                                    </p>
+                                    <a href="/showbook/<%= book._id %>" class="btn btn-primary w-100">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </section>

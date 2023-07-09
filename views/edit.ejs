@@ -1,0 +1,70 @@
+<% layout('layout/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center mb-5">Update Book Details</h1>
+        <div class="col-6 offset-3">
+            <form action="/showbook/<%=book._id%>?_method=PUT" method="POST" class="needs-validation" novalidate>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="name" name="book[name]" placeholder="Name"
+                        value="<%=book.name%>" required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="row g-2">
+                    <div class="col-md input-group mb-3">
+                        <span class="input-group-text">&#8377</span>
+                        <div class="form-floating">
+                            <input class="form-control" type="number" id="price" name="book[price]" placeholder="Price"
+                                value="<%=book.price%>" required>
+                            <label for="price">Price</label>
+                        </div>
+                    </div>
+                    <div class="col-md form-floating mb-3">
+                        <input class="form-control" type="number" id="edition" name="book[edition]" placeholder="Name"
+                            value="<%=book.edition%>" required>
+                        <label for="edition">Edition</label>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="author" name="book[authors]" placeholder="Author(s)"
+                        value="<%=book.authors%>" required>
+                    <label for="author">Author(s)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="publisher" name="book[publisher]"
+                        placeholder="Publisher" value="<%=book.publisher%>" required>
+                    <label for="publisher">Publisher</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" name="book[category]" id="category" required>
+                        <option value="computer" <%if (book.category==='computer' ) {%>
+                            selected
+                            <%}%> >Computer Engineering
+                        </option>
+                        <option value="mechanical" <%if (book.category==='mechanical' ) {%>
+                            selected
+                            <%}%> >Mechanical Engineering
+                        </option>
+                        <option value="electrical" <%if (book.category==='electrical' ) {%>
+                            selected
+                            <%}%> >Electrical Engineering
+                        </option>
+                        <option value="civil" <%if (book.category==='civil' ) {%>
+                            selected
+                            <%}%> >Civil Engineering
+                        </option>
+                    </select>
+                    <label for="category">Category</label>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Upload Image (Less than 70KB)</label>
+                    <input class="form-control" id="formFile" type="file" label="Image" name="image" id="image-upload"
+                        accept=".jpeg, .png, .jpg" onchange="imageUpload(this)" required>
+                    <p id="file-result" style="color: red;"></p>
+                    <textarea name="book[image]" id="image-upload-text" style="display: none;"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info" id="book-submit-btn">Update Book</button>
+                    <a class=" btn btn-warning" type="button" href="/showbook/<%=book._id%>">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>

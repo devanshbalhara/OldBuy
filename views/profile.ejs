@@ -1,0 +1,56 @@
+<% layout('layout/boilerplate') %>
+    <div class="row mb-5">
+        <h1 class="text-center mb-5">User Details</h1>
+        <div class="col-12 offset-0 col-lg-4 offset-lg-4 col-md-8 offset-md-2">
+            <div class="card align-items-center">
+                <img src="/images/profile.png" style="max-height: 10rem; max-width: 10rem ;" class="card-img-top mt-3">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center w-100">
+                    <h5 class="card-title w-100 text-center">
+                        <%= user.username %>
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush w-100 text-center">
+                    <li class="list-group-item d-flex flex-column align-items-center justify-content-center">
+                        <%= user.email %>
+                    </li>
+                    <li class="list-group-item d-flex flex-column align-items-center justify-content-center">
+                        <form class="d-inline w-100" action="/profile?_method=DELETE" method="POST">
+                            <button class="btn btn-danger w-100">Delete</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="text-center mb-5">Your Live Books</h1>
+    <% if (!books.length) { %>
+        <div class="alert alert-info col-6 offset-3" role="alert">
+            No Record Found
+        </div>
+        <% } %>
+            <section class="mt-5 mb-5">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5" id="books-list">
+                    <% for(let book of books) { %>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="<%= book.image%>" class="card-img-top"
+                                    style="max-height: 200px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= book.name %>
+                                    </h5>
+                                    <p class="card-text">
+                                    <p class="book-list-price">Price : &#8377 <%= book.price %>
+                                    </p>
+                                    <p class="book-list-edition">Edition : <%= book.edition %>
+                                    </p>
+                                    <p class="book-list-date" style="display: none;">
+                                        <%= book.createdAt %>
+                                    </p>
+                                    </p>
+                                    <a href="/showbook/<%= book._id %>" class="btn btn-primary w-100">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
