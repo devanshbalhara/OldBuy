@@ -14,6 +14,7 @@ category and sort by attributes, edit and delete books, etc.
 3. MongoDB should be installed and the server should be live
 4. Run the server using `nodemon index.js`
 5. Visit the url [link](http://localhost:3000/)
+6. Login/Register using DTU mail ID with format like - ____@dtu.ac.in 
 
 ## Screenshots
 <img src="https://github.com/devanshbalhara/OldBuy/blob/main/screenshots/home.png" height=250>
